@@ -153,7 +153,8 @@ Phase 3で `project_id` / `model_version` / `equipment_ids` / `issue_ids` を追
 - `Directory.Build.props` の `NavisworksApiDir`（環境変数 `NAVISWORKS_API_DIR` で上書き可）
   がNavisworks DLLの参照先。DLLはリポジトリに含めない（再配布不可のため）。
 - Navisworks参照は `Private=false`（CopyLocalしない）。実行時はNavisworks本体が解決する。
-- 配置先は `%APPDATA%\Autodesk Navisworks Manage <ver>\Plugins\PanoramaNavis.Addin\`。
+- 配置先は `%APPDATA%\Autodesk Navisworks Simulate <ver>\Plugins\PanoramaNavis.Addin\`
+  （Manageの場合は `Autodesk Navisworks Manage <ver>`）。
   **フォルダ名はアセンブリ名と一致が必須**（Navisworksのプラグイン検出規約）。
 
 ## 既知の設計上の割り切り（PoC）

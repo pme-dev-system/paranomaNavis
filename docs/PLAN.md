@@ -102,7 +102,8 @@ Navisworks APIはLinux上で検証できないため、以下を実機で確認�
 
 ## 直近のアクション
 
-1. Windows + Navisworks Manage（2024/2025）環境で `PanoramaNavis.sln` をビルド
+1. Windows + Navisworks Simulate 2023 環境で `PanoramaNavis.sln` をビルド
+   （参照先の既定はSimulate 2023。Manageや別バージョンは `NAVISWORKS_API_DIR` で上書き）
 2. 検証チェックリストを上から消化（要修正箇所は `ARCHITECTURE.md` の該当表を更新）
 3. 小規模モデルで初回パノラマ生成 → `viewer/panorama-viewer.html` で確認
 4. 継ぎ目・天地の品質を評価し、Phase 2の優先順位を決定

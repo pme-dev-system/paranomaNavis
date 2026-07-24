@@ -46,12 +46,18 @@ Navisworks APIに依存する部分は実機でのみ検証可能なため、要
 
 ## ビルド（Windows）
 
-前提: Visual Studio 2022 もしくは .NET SDK 8＋.NET Framework 4.8 Developer Pack、Navisworks Manage/Simulate 2024以降。
+前提: Visual Studio 2022 もしくは .NET SDK 8＋.NET Framework 4.8 Developer Pack、Navisworks Manage/Simulate 2023以降。
+
+参照先の既定は **Navisworks Simulate 2023**（`Directory.Build.props` で定義）なので、Simulate 2023ならそのままビルドできます。
 
 ```powershell
-# Navisworks のインストール先を指定（既定は Navisworks Manage 2025）
-$env:NAVISWORKS_API_DIR = "C:\Program Files\Autodesk\Navisworks Manage 2025"
+dotnet build PanoramaNavis.sln -c Release
+```
 
+別バージョンやManageの場合のみ、環境変数で参照先を上書きします。
+
+```powershell
+$env:NAVISWORKS_API_DIR = "C:\Program Files\Autodesk\Navisworks Manage 2025"
 dotnet build PanoramaNavis.sln -c Release
 ```
 
@@ -68,8 +74,9 @@ dotnet build PanoramaNavis.sln -c Release
 ビルドした `PanoramaNavis.Addin.dll` を、**アセンブリ名と同名のフォルダ**に入れてNavisworksのPluginsフォルダへ配置します。
 
 ```text
-%APPDATA%\Autodesk Navisworks Manage 2025\Plugins\PanoramaNavis.Addin\PanoramaNavis.Addin.dll
-（または <Navisworksインストール先>\Plugins\PanoramaNavis.Addin\PanoramaNavis.Addin.dll）
+%APPDATA%\Autodesk Navisworks Simulate 2023\Plugins\PanoramaNavis.Addin\PanoramaNavis.Addin.dll
+（または <Navisworksインストール先>\Plugins\PanoramaNavis.Addin\PanoramaNavis.Addin.dll。
+　Manage の場合はフォルダ名の Simulate を Manage に読み替え）
 ```
 
 `PanoramaNavis.Core.dll` も同じフォルダへコピーします（ビルド出力に含まれます）。

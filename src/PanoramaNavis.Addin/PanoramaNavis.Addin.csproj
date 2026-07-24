@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!-- Navisworks 2024/2025 は .NET Framework 4.8。
+    <!-- Navisworks 2023〜2025 は .NET Framework 4.8。
          .NET 8 ベースのNavisworksを対象にする場合は net8.0-windows へ変更する。 -->
     <TargetFramework>net48</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
