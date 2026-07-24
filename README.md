@@ -46,13 +46,36 @@ Navisworks APIに依存する部分は実機でのみ検証可能なため、要
 
 ## ビルド（Windows）
 
-前提: Visual Studio 2022 もしくは .NET SDK 8＋.NET Framework 4.8 Developer Pack、Navisworks Manage/Simulate 2023以降。
+前提: **Navisworks Manage/Simulate 2023以降がインストールされたWindows PC** と、次のいずれかのビルドツール。
+.NET Framework 4.8 Developer Pack は不要です（参照アセンブリはNuGetから自動取得されます）。
+
+| ビルドツール | 向いている場合 |
+|---|---|
+| .NET SDK 8（コマンドライン） | 最小構成。管理者権限なしでもインストール可 |
+| Visual Studio 2022（Community可） | GUIで開発・デバッグもしたい場合 |
+| Visual Studio Build Tools 2022 | IDE不要で `msbuild` コマンドだけ欲しい場合 |
 
 参照先の既定は **Navisworks Simulate 2023**（`Directory.Build.props` で定義）なので、Simulate 2023ならそのままビルドできます。
 
 ```powershell
 dotnet build PanoramaNavis.sln -c Release
 ```
+
+.NET SDK を管理者権限なしで入れる場合（ユーザーフォルダにインストールされます）:
+
+```powershell
+Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
+powershell -ExecutionPolicy Bypass -File dotnet-install.ps1 -Channel 8.0
+$env:PATH = "$env:LOCALAPPDATA\Microsoft\dotnet;$env:PATH"
+```
+
+Visual Studio Build Tools の場合は次のコマンドになります。
+
+```powershell
+msbuild PanoramaNavis.sln /restore /p:Configuration=Release
+```
+
+> ビルドが必要なのは1台だけです。生成された2つのDLLを他のPCの配置先へコピーすれば動くため、利用者全員がビルド環境を持つ必要はありません。
 
 別バージョンやManageの場合のみ、環境変数で参照先を上書きします。
 

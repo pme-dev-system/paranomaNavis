@@ -16,6 +16,12 @@
     <ProjectReference Include="..\PanoramaNavis.Core\PanoramaNavis.Core.csproj" />
   </ItemGroup>
 
+  <!-- .NET Framework 4.8 の参照アセンブリをNuGetから取得する。
+       これにより Developer Pack のインストール不要で .NET SDK 単体でビルドできる -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
   <!-- Navisworks本体が実行時に解決するため CopyLocal しない (Private=false) -->
   <ItemGroup>
     <Reference Include="Autodesk.Navisworks.Api">
