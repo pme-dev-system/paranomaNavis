@@ -34,7 +34,20 @@ namespace PanoramaNavis.Addin.Capture
             if (string.IsNullOrWhiteSpace(options.OutputDirectory))
                 throw new ArgumentException("出力先フォルダが指定されていません。");
 
+            Vec3 position = ResolvePosition(options, _doc.CurrentViewpoint.CreateCopy());
             string panoramaId = "Panorama_" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            return RunAt(options, position, panoramaId);
+        }
+
+        /// <summary>
+        /// 指定位置・指定フォルダ名でパノラマを1件生成する。
+        /// 出力先は OutputDirectory/panoramaId/。ツアーの一括撮影からも使用する。
+        /// </summary>
+        public CaptureResult RunAt(CaptureOptions options, Vec3 position, string panoramaId)
+        {
+            if (string.IsNullOrWhiteSpace(options.OutputDirectory))
+                throw new ArgumentException("出力先フォルダが指定されていません。");
+
             string outputFolder = Path.Combine(options.OutputDirectory, panoramaId);
             string facesFolder = Path.Combine(outputFolder, "faces");
             Directory.CreateDirectory(facesFolder);
@@ -45,8 +58,6 @@ namespace PanoramaNavis.Addin.Capture
             Viewpoint originalViewpoint = _doc.CurrentViewpoint.CreateCopy();
             try
             {
-                Vec3 position = ResolvePosition(options, originalViewpoint);
-
                 // PoCでは基準方位をモデルの+Y（プロジェクト北）に固定する。
                 // パノラマは全周を含むため機能上の欠落はなく、方位は metadata に記録される。
                 var frame = new NavisCamera.PanoFrame(Vec3.UnitY, Vec3.UnitZ);

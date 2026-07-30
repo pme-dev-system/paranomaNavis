@@ -17,6 +17,16 @@ namespace PanoramaNavis.Core
         public void BeginObject()
         {
             AppendCommaIfNeeded();
+            Indent();
+            _sb.Append("{\n");
+            _depth++;
+            _needComma = false;
+        }
+
+        /// <summary>名前付きのネストオブジェクトを開始する（"name": { ... }）。</summary>
+        public void BeginObject(string name)
+        {
+            WriteName(name);
             _sb.Append("{\n");
             _depth++;
             _needComma = false;
@@ -31,6 +41,24 @@ namespace PanoramaNavis.Core
             _needComma = true;
         }
 
+        /// <summary>名前付きの配列を開始する（"name": [ ... ]）。要素は BeginObject()/EndObject() 等で書く。</summary>
+        public void BeginArray(string name)
+        {
+            WriteName(name);
+            _sb.Append("[\n");
+            _depth++;
+            _needComma = false;
+        }
+
+        public void EndArray()
+        {
+            _depth--;
+            _sb.Append('\n');
+            Indent();
+            _sb.Append(']');
+            _needComma = true;
+        }
+
         public void Property(string name, string value)
         {
             WriteName(name);
@@ -41,12 +69,21 @@ namespace PanoramaNavis.Core
         {
             WriteName(name);
             _sb.Append(value.ToString(CultureInfo.InvariantCulture));
+            _needComma = true;
         }
 
         public void Property(string name, double value)
         {
             WriteName(name);
             _sb.Append(FormatDouble(value));
+            _needComma = true;
+        }
+
+        public void Property(string name, bool value)
+        {
+            WriteName(name);
+            _sb.Append(value ? "true" : "false");
+            _needComma = true;
         }
 
         public void PropertyVec3(string name, Vec3 v)
@@ -56,6 +93,7 @@ namespace PanoramaNavis.Core
                .Append(", \"y\": ").Append(FormatDouble(v.Y))
                .Append(", \"z\": ").Append(FormatDouble(v.Z))
                .Append(" }");
+            _needComma = true;
         }
 
         private static string FormatDouble(double value)

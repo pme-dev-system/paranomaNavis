@@ -16,6 +16,11 @@
     <ProjectReference Include="..\PanoramaNavis.Core\PanoramaNavis.Core.csproj" />
   </ItemGroup>
 
+  <!-- SectionClipper がCOM APIを dynamic（遅延バインド）で呼ぶために必要 -->
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
   <!-- .NET Framework 4.8 の参照アセンブリをNuGetから取得する。
        これにより Developer Pack のインストール不要で .NET SDK 単体でビルドできる -->
   <ItemGroup>

@@ -11,6 +11,9 @@ namespace PanoramaNavis.Core
 
         /// <summary>XYZ座標を直接入力。</summary>
         ManualCoordinates,
+
+        /// <summary>平面図パノラマツアーで平面図上のクリックにより決定（TourCaptureService専用）。</summary>
+        PlanPoint,
     }
 
     /// <summary>パノラマ生成の設定値。ダイアログとサービスの間で受け渡す。</summary>
