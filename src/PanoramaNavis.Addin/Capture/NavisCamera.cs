@@ -70,7 +70,7 @@ namespace PanoramaNavis.Addin.Capture
         /// リフレクション経由で設定を試みる（存在しなければ何もしない）。
         /// 実機検証後、プロパティの存在が確認できたら直接代入へ置き換えること。
         /// </summary>
-        private static void TrySetAspectRatio(Viewpoint vp, double aspectRatio)
+        internal static void TrySetAspectRatio(Viewpoint vp, double aspectRatio)
         {
             try
             {
