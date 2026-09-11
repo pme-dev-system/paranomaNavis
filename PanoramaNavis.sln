@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AE55D48E-DDDF-45CB-8E67-BD2E0C76D0A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanoramaNavis.Core", "src\PanoramaNavis.Core\PanoramaNavis.Core.csproj", "{D2595921-0EBB-41F0-9931-03F5A8499944}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanoramaNavis.Addin", "src\PanoramaNavis.Addin\PanoramaNavis.Addin.csproj", "{80233707-BEFE-43EB-8379-C4F5F6319DAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{76317D08-CDA0-4A1D-AF14-19FAD99F1A03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanoramaNavis.Core.Tests", "tests\PanoramaNavis.Core.Tests\PanoramaNavis.Core.Tests.csproj", "{758ABD47-9573-4E25-973C-DFA150434641}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{344921AE-668B-456E-BDC4-2FE6B88E3EB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPatternGenerator", "tools\TestPatternGenerator\TestPatternGenerator.csproj", "{9D7D5BDA-73E7-4E6D-B850-612AFE554582}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2595921-0EBB-41F0-9931-03F5A8499944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2595921-0EBB-41F0-9931-03F5A8499944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2595921-0EBB-41F0-9931-03F5A8499944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2595921-0EBB-41F0-9931-03F5A8499944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80233707-BEFE-43EB-8379-C4F5F6319DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80233707-BEFE-43EB-8379-C4F5F6319DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80233707-BEFE-43EB-8379-C4F5F6319DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80233707-BEFE-43EB-8379-C4F5F6319DAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{758ABD47-9573-4E25-973C-DFA150434641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{758ABD47-9573-4E25-973C-DFA150434641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{758ABD47-9573-4E25-973C-DFA150434641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{758ABD47-9573-4E25-973C-DFA150434641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D7D5BDA-73E7-4E6D-B850-612AFE554582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D7D5BDA-73E7-4E6D-B850-612AFE554582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D7D5BDA-73E7-4E6D-B850-612AFE554582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D7D5BDA-73E7-4E6D-B850-612AFE554582}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D2595921-0EBB-41F0-9931-03F5A8499944} = {AE55D48E-DDDF-45CB-8E67-BD2E0C76D0A5}
+		{80233707-BEFE-43EB-8379-C4F5F6319DAB} = {AE55D48E-DDDF-45CB-8E67-BD2E0C76D0A5}
+		{758ABD47-9573-4E25-973C-DFA150434641} = {76317D08-CDA0-4A1D-AF14-19FAD99F1A03}
+		{9D7D5BDA-73E7-4E6D-B850-612AFE554582} = {344921AE-668B-456E-BDC4-2FE6B88E3EB4}
+	EndGlobalSection
+EndGlobal

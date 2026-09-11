@@ -1,0 +1,13 @@
+<Project>
+
+  <!--
+    Navisworks .NET API の参照先。
+    環境変数 NAVISWORKS_API_DIR で上書き可能（例: Manage や別バージョンの場合）。
+    DLLは再配布不可のためリポジトリには含めない。
+  -->
+  <PropertyGroup>
+    <NavisworksApiDir Condition="'$(NavisworksApiDir)' == '' and '$(NAVISWORKS_API_DIR)' != ''">$(NAVISWORKS_API_DIR)</NavisworksApiDir>
+    <NavisworksApiDir Condition="'$(NavisworksApiDir)' == ''">C:\Program Files\Autodesk\Navisworks Simulate 2023</NavisworksApiDir>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Navisworks 2023〜2025 は .NET Framework 4.8。
+         .NET 8 ベースのNavisworksを対象にする場合は net8.0-windows へ変更する。 -->
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <RootNamespace>PanoramaNavis.Addin</RootNamespace>
+    <AssemblyName>PanoramaNavis.Addin</AssemblyName>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PanoramaNavis.Core\PanoramaNavis.Core.csproj" />
+  </ItemGroup>
+
+  <!-- SectionClipper がCOM APIを dynamic（遅延バインド）で呼ぶために必要 -->
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <!-- .NET Framework 4.8 の参照アセンブリをNuGetから取得する。
+       これにより Developer Pack のインストール不要で .NET SDK 単体でビルドできる -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Navisworks本体が実行時に解決するため CopyLocal しない (Private=false) -->
+  <ItemGroup>
+    <Reference Include="Autodesk.Navisworks.Api">
+      <HintPath>$(NavisworksApiDir)\Autodesk.Navisworks.Api.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Autodesk.Navisworks.Api.ComApi">
+      <HintPath>$(NavisworksApiDir)\Autodesk.Navisworks.Api.ComApi.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Autodesk.Navisworks.Api.Interop.ComApi">
+      <HintPath>$(NavisworksApiDir)\Autodesk.Navisworks.Api.Interop.ComApi.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

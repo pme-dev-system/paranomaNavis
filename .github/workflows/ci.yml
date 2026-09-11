@@ -1,0 +1,21 @@
+name: core-tests
+
+# アドイン本体はNavisworks SDK(Windows)が必要なためCIではビルドしない。
+# ここではOS非依存の変換エンジン(Core)のビルドとテストのみを検証する。
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - name: Build core library
+        run: dotnet build src/PanoramaNavis.Core -c Release
+      - name: Run unit tests
+        run: dotnet test tests/PanoramaNavis.Core.Tests -c Release
